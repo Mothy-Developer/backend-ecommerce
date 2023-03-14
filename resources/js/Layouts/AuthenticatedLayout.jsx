@@ -29,10 +29,6 @@ export default function Authenticated({ auth, header, children }) {
                                     User
                                 </NavLink>
 
-                                <NavLink href={route('courier')} active={route().current('courier')}>
-                                    Courier
-                                </NavLink>
-
                                 <NavLink href={route('product')} active={route().current('product')}>
                                     Product
                                 </NavLink>
@@ -122,10 +118,6 @@ export default function Authenticated({ auth, header, children }) {
 
                         <ResponsiveNavLink>
                             User
-                        </ResponsiveNavLink>
-
-                        <ResponsiveNavLink>
-                            Courier
                         </ResponsiveNavLink>
 
                         <ResponsiveNavLink>

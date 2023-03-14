@@ -32,10 +32,6 @@ Route::get('/user', function () {
     return Inertia::render('User');
 })->middleware(['auth', 'verified'])->name('user');
 
-Route::get('/courier', function () {
-    return Inertia::render('Courier');
-})->middleware(['auth', 'verified'])->name('courier');
-
 Route::get('/product', function () {
     return Inertia::render('Product');
 })->middleware(['auth', 'verified'])->name('product');

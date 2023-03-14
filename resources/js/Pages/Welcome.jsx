@@ -47,6 +47,15 @@ export default function Welcome(props) {
                         </svg>
                     </div>
 
+                    <div>
+                        <h2 className="mt-6 text-xl font-semibold text-gray-900 dark:text-white text-center">
+                            Dashboard Admin
+                        </h2>
+                        <h2 className="mt-2 text-xl font-semibold text-gray-900 dark:text-white">
+                            E-Commerce System
+                        </h2>
+                    </div>    
+
                     {/* <div className="mt-16">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                             <a

@@ -24,6 +24,30 @@ export default function Authenticated({ auth, header, children }) {
                                 <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                     Dashboard
                                 </NavLink>
+
+                                <NavLink href={route('user')} active={route().current('user')}>
+                                    User
+                                </NavLink>
+
+                                <NavLink href={route('courier')} active={route().current('courier')}>
+                                    Courier
+                                </NavLink>
+
+                                <NavLink href={route('product')} active={route().current('product')}>
+                                    Product
+                                </NavLink>
+
+                                <NavLink href={route('product-gallery')} active={route().current('product-gallery')}>
+                                    Product Gallery
+                                </NavLink>
+
+                                <NavLink href={route('product-category')} active={route().current('product-category')}>
+                                    Product Category
+                                </NavLink>
+
+                                <NavLink href={route('transaction')} active={route().current('transaction')}>
+                                    Transaction
+                                </NavLink>
                             </div>
                         </div>
 
@@ -94,6 +118,30 @@ export default function Authenticated({ auth, header, children }) {
                     <div className="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
                             Dashboard
+                        </ResponsiveNavLink>
+
+                        <ResponsiveNavLink>
+                            User
+                        </ResponsiveNavLink>
+
+                        <ResponsiveNavLink>
+                            Courier
+                        </ResponsiveNavLink>
+
+                        <ResponsiveNavLink>
+                            Product
+                        </ResponsiveNavLink>
+
+                        <ResponsiveNavLink>
+                            Product Gallery
+                        </ResponsiveNavLink>    
+
+                        <ResponsiveNavLink>
+                            Product Category
+                        </ResponsiveNavLink>
+
+                        <ResponsiveNavLink>
+                            Transaction
                         </ResponsiveNavLink>
                     </div>
 

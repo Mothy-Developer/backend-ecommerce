@@ -11,6 +11,7 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
     const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
         name: user.name,
         email: user.email,
+        storeName: user.storeName
     });
 
     const submit = (e) => {
@@ -60,6 +61,18 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
                     />
 
                     <InputError className="mt-2" message={errors.email} />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="Store Name" value="Store Name"/>
+
+                    <TextInput
+                        id="store_name"
+                        type="text"
+                        className="mt-1 block w-full"
+                    />
+
+                    <InputError className="mt-2" message={errors.storeName}/>
                 </div>
 
                 {mustVerifyEmail && user.email_verified_at === null && (

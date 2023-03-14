@@ -22,12 +22,12 @@ export default function Welcome(props) {
                                 Log in
                             </Link>
 
-                            <Link
+                            {/* <Link
                                 href={route('register')}
                                 className="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                             >
                                 Register
-                            </Link>
+                            </Link> */}
                         </>
                     )}
                 </div>
@@ -47,7 +47,7 @@ export default function Welcome(props) {
                         </svg>
                     </div>
 
-                    <div className="mt-16">
+                    {/* <div className="mt-16">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                             <a
                                 href="https://laravel.com/docs"
@@ -318,7 +318,7 @@ export default function Welcome(props) {
                         <div className="ml-4 text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
                             Laravel v{props.laravelVersion} (PHP v{props.phpVersion})
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 

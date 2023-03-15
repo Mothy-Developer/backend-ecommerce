@@ -14,7 +14,7 @@ export default function Dashboard(props) {
                 <div class="sm:flex sm:items-center">
                     <div class="sm:flex-auto">
                     <h1 class="text-base font-semibold leading-6 text-gray-900">Users List</h1>
-                    <p class="mt-2 text-sm text-gray-700">A list of all the users in your account including their name, title, email and role.</p>
+                    <p class="mt-2 text-sm text-gray-700">A list of all the users.</p>
                     </div>
                     <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
                     <button type="button" class="block rounded-md bg-indigo-600 py-2 px-3 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add user</button>
@@ -27,6 +27,7 @@ export default function Dashboard(props) {
                         <table class="min-w-full divide-y divide-gray-300">
                             <thead class="bg-gray-50">
                             <tr>
+                            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">No</th>
                                 <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Email</th>
                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Username</th>
@@ -41,6 +42,7 @@ export default function Dashboard(props) {
                             </thead>
                             <tbody class="divide-y divide-gray-200 bg-white">
                                 <tr>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">1</td>
                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Lindsay Walton</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">lindsay.walton@example.com</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">lindsay</td>
@@ -55,6 +57,7 @@ export default function Dashboard(props) {
                             </tbody>
                             <tbody class="divide-y divide-gray-200 bg-white">
                                 <tr>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">2</td>
                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Lindsay Walton</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">lindsay.walton@example.com</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">lindsay</td>
@@ -69,6 +72,7 @@ export default function Dashboard(props) {
                             </tbody>
                             <tbody class="divide-y divide-gray-200 bg-white">
                                 <tr>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">3</td>
                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Lindsay Walton</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">lindsay.walton@example.com</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">lindsay</td>
@@ -83,6 +87,7 @@ export default function Dashboard(props) {
                             </tbody>
                             <tbody class="divide-y divide-gray-200 bg-white">
                                 <tr>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">4</td>
                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Lindsay Walton</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">lindsay.walton@example.com</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">lindsay</td>
@@ -97,6 +102,7 @@ export default function Dashboard(props) {
                             </tbody>
                             <tbody class="divide-y divide-gray-200 bg-white">
                                 <tr>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">5</td>
                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Lindsay Walton</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">lindsay.walton@example.com</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">lindsay</td>

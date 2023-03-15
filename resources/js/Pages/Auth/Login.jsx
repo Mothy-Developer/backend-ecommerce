@@ -78,8 +78,8 @@ export default function Login({ status, canResetPassword }) {
                 </div>
 
                 <div className="flex items-center mt-4 flex-col">
-                    <PrimaryButton className="ml-4 mb-2" disabled={processing}>
-                        Log in
+                    <PrimaryButton className="w-full mb-4" disabled={processing}>
+                        <p className="mx-auto">Log In</p>
                     </PrimaryButton>
 
                     {canResetPassword && (

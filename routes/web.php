@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,28 +26,30 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard/Index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
+// Route::resource('user', UserController::class);
+
 Route::get('/user', function () {
-    return Inertia::render('User');
+    return Inertia::render('User/Index');
 })->middleware(['auth', 'verified'])->name('user');
 
 Route::get('/product', function () {
-    return Inertia::render('Product');
+    return Inertia::render('Product/Index');
 })->middleware(['auth', 'verified'])->name('product');
 
 Route::get('/product-gallery', function () {
-    return Inertia::render('ProductGallery');
+    return Inertia::render('ProductGallery/Index');
 })->middleware(['auth', 'verified'])->name('product-gallery');
 
 Route::get('/product-category', function () {
-    return Inertia::render('ProductCategory');
+    return Inertia::render('ProductCategory/Index');
 })->middleware(['auth', 'verified'])->name('product-category');
 
 Route::get('/transaction', function () {
-    return Inertia::render('Transaction');
+    return Inertia::render('Transaction/Index');
 })->middleware(['auth', 'verified'])->name('transaction');
 
 Route::middleware('auth')->group(function () {

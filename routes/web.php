@@ -28,6 +28,7 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
 Route::get('/user', function () {
     return Inertia::render('User');
 })->middleware(['auth', 'verified'])->name('user');

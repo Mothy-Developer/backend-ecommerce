@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Models\Role;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -34,7 +35,15 @@ Route::get('/dashboard', function () {
 
 Route::get('/user', function () {
     return Inertia::render('User/Index');
-})->middleware(['auth', 'verified'])->name('user');
+})->middleware(['auth', 'verified'])->name('user.index');
+
+Route::get('/user/create', function () {
+    return Inertia::render('User/Create', [
+        'roles' => Role::get()
+    ]);
+})->middleware(['auth', 'verified'])->name('user.create');
+
+Route::post('user', [UserController::class, 'store'])->name('user.store');
 
 Route::get('/product', function () {
     return Inertia::render('Product/Index');

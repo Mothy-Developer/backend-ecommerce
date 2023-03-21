@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     public function userRole()
     {
-        $this->belongsTo(UserRole::class, 'roles_id', 'id');
+        $this->belongsTo(Role::class, 'roles_id', 'id');
     }
 
     public function products()

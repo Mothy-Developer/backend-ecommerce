@@ -11,6 +11,9 @@ const ActionButton = ( props ) => {
     )
 }
 
+const UpIcon = () => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" /></svg>
+const DownIcon = () => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+
 export default function Index(props) {
 
     const { data: user, meta, filtered, attributes } = props.user;
@@ -19,6 +22,13 @@ export default function Index(props) {
     const [ params, setParams ] = useState(filtered);
 
     const onChange = (e) => setParams({...params, [e.target.name]: e.target.value});
+    const sort = (item) => {
+        setParams({
+            ...params,
+            field: item,
+            direction: params.direction == 'asc' ? 'desc' : 'asc'
+        });
+    };
 
     const deleteUser = async (id) => {
         try {
@@ -33,10 +43,10 @@ export default function Index(props) {
         debounce((query) => {
             router.get(
                 route('user.index'),
-                pickBy(query),
+                {...pickBy(query), page: query.q ? 1 : query.page },
                 {
                     preserveState: true,
-                    
+                    preserveScroll: true,
                 }
             )
         }, 150)
@@ -76,12 +86,20 @@ export default function Index(props) {
                         <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                             <div className="mb-2 flex items-center justify-end">
                                 <div className="w-1/2">
-                                    <select name="load" id="load" onChange={onChange} value={params.load} className="rounded-lg border-gray-300 focus:ring-blue-200 focus:ring transition duration-150 ease-in form-select">
-                                        <option value="5">5</option>
-                                        <option value="10">10</option>
-                                        <option value="20">20</option>
-                                        {/* {pageNumber.map((page, index) => <option key={index}>{page}</option>)} */}
-                                    </select>
+                                    <div className="flex items-center justify-end gap-x-2 mb-3">
+                                        <select name="load" id="load" onChange={onChange} value={params.load} className="rounded-lg border-gray-300 focus:ring-blue-200 focus:ring transition duration-150 ease-in form-select">
+                                            <option value="5">5</option>
+                                            <option value="10">10</option>
+                                            <option value="20">20</option>
+                                            {/* {pageNumber.map((page, index) => <option key={index}>{page}</option>)} */}
+                                        </select>
+                                        <div className="flex items-center gap-x-2 rounded-lg bg-white px-2 border-gray-300 focus-within:ring-blue-200 focus-within:ring border focus-within:border-blue-400 transition duration-150 ease-in ">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 inline text-gray-500">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                            </svg>
+                                            <input type="text" name="q" id="q" onChange={onChange} value={params.q} className="border-0 focus:ring-0 form-text w-full" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
@@ -90,7 +108,12 @@ export default function Index(props) {
                                     <tr>
                                         <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6"/>
                                         <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">No</th>
-                                        <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
+                                        <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                            <div className="cursor-pointer flex items-center gap-x-2 justify-between" onClick={() => sort('name')}>
+                                                Name
+                                                { params.direction == 'asc' ? UpIcon() : DownIcon() }
+                                            </div>
+                                        </th>
                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Email</th>
                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Address</th>
                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Phone Number</th>
@@ -140,9 +163,9 @@ export default function Index(props) {
                             </div>
                         </div>
                     </div>
-                    <ul className="flex items-center gap-x-1 mt-10 mb-10">
+                    <ul className="flex items-center gap-x-1 mt-5 mb-10">
                         {meta.links.map((item, index) => (
-                            <Link key={index} disabled={item.url == null ? true : false} className={`${item.url == null ? 'text-gray-500 cursor-default' : 'text-gray-800'} w-12 h-9 rounded-lg flex items-center justify-center border bg-white`} onClick={() => setParams({ ...params, page: new URL(item.url).searchParams.get('page') })}>{item.label}</Link>
+                            <button key={index} disabled={item.url == null ? true : false} className={`${item.url == null ? 'text-gray-500 cursor-default' : 'text-gray-800'} w-12 h-9 rounded-lg flex items-center justify-center border bg-white`} onClick={() => setParams({ ...params, page: new URL(item.url).searchParams.get('page') })}>{item.label}</button>
                         ))}
                     </ul>
                 </div>

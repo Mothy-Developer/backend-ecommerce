@@ -19,15 +19,33 @@ class UserController extends Controller
 
     public function index(Request $request) 
     {
+        $query = User::query();
+        
+        if ($request->q)
+        {
+            $query->where('name', 'like', '%'. $request->q .'%')
+                ->orWhere('email', 'like', '%'. $request->q .'%');
+        }
+
+
+        if ($request->has(['field', 'direction']))
+        {
+            $query->orderBy($request->field, $request->direction);
+        }
+
         $users = (
-            UserResource::collection(User::paginate($request->load))
+            UserResource::collection($query->paginate($request->load))
         )->additional([
             'attributes' => [
                 'total' => User::count(),
                 'per_page' => 5,
             ],
             'filtered' => [
-                'load' => $request->load ?? $this->loadDefault
+                'load' => $request->load ?? $this->loadDefault,
+                'q' => $request-> q ?? '',
+                'page' => $request->page ?? 1,
+                'field' => $request->field ?? '',
+                'direction' => $request->direction ?? ''
             ]
         ]);
         return inertia('User/Index', [

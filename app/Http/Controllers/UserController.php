@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function __construct() 
     {
-        $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('auth')->except(['index']);
     }
 
      /**
@@ -36,6 +36,20 @@ class UserController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(User $user) 
+    {
+        return inertia('User/Edit', [
+            'roles' => Role::get(),
+            'user' => $user
+        ]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -54,18 +68,45 @@ class UserController extends Controller
             'role_id' => ['required']
         ]);
 
-        // $user = $request->user()->create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'address' => $request->address,
-        //     'phone_number' => $request->phone_number,
-        //     'wallet' => $request->wallet,
-        //     'store_name' => $request->store_name,
-        //     'password' => $request->password,
-        //     'role_id' => $request->role_id,
-        // ]);
+        $user = $request->user()->create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'address' => $request->address,
+            'phone_number' => $request->phone_number,
+            'wallet' => $request->wallet,
+            'store_name' => $request->store_name,
+            'password' => $request->password,
+            'role_id' => $request->role_id,
+        ]);
 
         return redirect(route('user.index'));
+    }
+
+    public function update(Request $request, User $user)
+    {
+        $request->validate([
+            'name' => ['required'],
+            'email' => ['required'],
+            'address' => ['required'],
+            'phone_number' => ['required'],
+            'wallet' => ['required'],
+            'store_name' => ['required'],
+            'password' => ['required'],
+            'role_id' => ['required']
+        ]);
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'address' => $request->address,
+            'phone_number' => $request->phone_number,
+            'wallet' => $request->wallet,
+            'store_name' => $request->store_name,
+            'password' => $request->password,
+            'role_id' => $request->role_id,
+        ]);
+
+        return redirect(route('user.index', $user));
     }
 
     /**
@@ -76,7 +117,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        // $this->authorize('delete', $user);
         $user->delete();
         return redirect(route('user.index'));
     }

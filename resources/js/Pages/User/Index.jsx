@@ -61,10 +61,10 @@ export default function Index(props) {
                             <tbody class="divide-y divide-gray-200 bg-white">
                                 {user.map((user, index) => (
                                     <tr key={user.id}> 
-                                        <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                        <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                             <div className="flex gap-2">
                                                 {/* <Link className="px-2 py-1 rounded-md text-white bg-teal-500">Show</Link>  */}
-                                                <Link className="px-2 py-1 rounded-md text-white bg-blue-500" >Edit</Link> 
+                                                <Link href={`/user/${user.id}/edit`} className="px-2 py-1 rounded-md text-white bg-blue-500">Edit</Link> 
                                                 <ActionButton type="button" className="bg-red-500" onClick={() => deleteUser(user.id) }>Delete</ActionButton> 
                                             </div>
                                         </td>

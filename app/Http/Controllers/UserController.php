@@ -6,6 +6,7 @@ use App\Http\Resources\UserResource;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -14,14 +15,21 @@ class UserController extends Controller
         $this->middleware('auth')->except(['index']);
     }
 
-     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public $loadDefault = 10;
+
     public function index(Request $request) 
     {
-        $users = UserResource::collection(User::paginate());
+        $users = (
+            UserResource::collection(User::paginate($request->load))
+        )->additional([
+            'attributes' => [
+                'total' => User::count(),
+                'per_page' => 5,
+            ],
+            'filtered' => [
+                'load' => $request->load ?? $this->loadDefault
+            ]
+        ]);
         return inertia('User/Index', [
             'user' => $users,
             'roles' => Role::get()
@@ -68,6 +76,17 @@ class UserController extends Controller
             'role_id' => ['required']
         ]);
 
+        $user = $request->user()->create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'address' => $request->address,
+            'phone_number' => $request->phone_number,
+            'wallet' => $request->wallet,
+            'store_name' => $request->store_name,
+            'password' => Hash::make($request->password),
+            'role_id' => $request->role_id,
+        ]);
+
         return redirect(route('user.index'));
     }
 
@@ -88,7 +107,7 @@ class UserController extends Controller
             'phone_number' => $request->phone_number,
             'wallet' => $request->wallet,
             'store_name' => $request->store_name,
-            'password' => $user->password,
+            'password' => Hash::make($user->password),
             'role_id' => $request->role_id,
         ]);
 

@@ -30,6 +30,7 @@ Route::get('/', function () {
 Route::resource('user', UserController::class);
 
 Route::post('user', [UserController::class, 'store'])->name('user.store');
+Route::put('user/{id}', [UserController::class, 'update'])->name('user.update');
 Route::delete('user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
 Route::get('/dashboard', function () {

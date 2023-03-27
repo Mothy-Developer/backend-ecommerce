@@ -68,17 +68,6 @@ class UserController extends Controller
             'role_id' => ['required']
         ]);
 
-        $user = $request->user()->create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'address' => $request->address,
-            'phone_number' => $request->phone_number,
-            'wallet' => $request->wallet,
-            'store_name' => $request->store_name,
-            'password' => $request->password,
-            'role_id' => $request->role_id,
-        ]);
-
         return redirect(route('user.index'));
     }
 
@@ -89,10 +78,7 @@ class UserController extends Controller
             'email' => ['required'],
             'address' => ['required'],
             'phone_number' => ['required'],
-            'wallet' => ['required'],
-            'store_name' => ['required'],
-            'password' => ['required'],
-            'role_id' => ['required']
+            'wallet' => ['required']
         ]);
 
         $user->update([
@@ -102,7 +88,7 @@ class UserController extends Controller
             'phone_number' => $request->phone_number,
             'wallet' => $request->wallet,
             'store_name' => $request->store_name,
-            'password' => $request->password,
+            'password' => $user->password,
             'role_id' => $request->role_id,
         ]);
 

@@ -26,7 +26,6 @@ export default function Create(props) {
         post(route('user.store'))
     };
 
-
     return (
         <AuthenticatedLayout
             auth={props.auth}

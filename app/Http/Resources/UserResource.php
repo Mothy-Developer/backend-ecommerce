@@ -22,11 +22,7 @@ class UserResource extends JsonResource
             'phone_number' => $this->phone_number,
             'wallet' => $this->wallet,
             'store_name' => $this->store_name,
-            'created_at' => $this->created_at->format("d F, Y"),
-            'role' => [
-                'id' => $this->role->id,
-                'name' => $this->role->name
-            ]
+            'created_at' => $this->created_at->format("d F, Y")
         ];
     }
 }

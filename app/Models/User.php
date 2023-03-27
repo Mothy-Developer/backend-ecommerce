@@ -23,6 +23,7 @@ class User extends Authenticatable
         'address',
         'phone_number',
         'wallet',
+        'store_name',
         'password',
         'roles_id'
     ];
@@ -47,18 +48,18 @@ class User extends Authenticatable
     ];
 
 
-    public function userRole()
+    public function role()
     {
-        $this->belongsTo(Role::class, 'roles_id', 'id');
+        return $this->belongsTo(Role::class);
     }
 
     public function products()
     {
-        $this->hasMany(Product::class, 'users_id', "id");
+        return $this->hasMany(Product::class);
     }
 
     public function transactions() 
     {
-        $this->hasMany(Transaction::class, 'transactions_id', 'id');
+        return $this->hasMany(Transaction::class);
     }
 }

@@ -26,24 +26,15 @@ Route::get('/', function () {
     ]);
 });
 
+// Resource User
+Route::resource('user', UserController::class);
+
+Route::post('user', [UserController::class, 'store'])->name('user.store');
+Route::delete('user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard/Index');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-
-// Route::resource('user', UserController::class);
-
-Route::get('/user', function () {
-    return Inertia::render('User/Index');
-})->middleware(['auth', 'verified'])->name('user.index');
-
-Route::get('/user/create', function () {
-    return Inertia::render('User/Create', [
-        'roles' => Role::get()
-    ]);
-})->middleware(['auth', 'verified'])->name('user.create');
-
-Route::post('user', [UserController::class, 'store'])->name('user.store');
 
 Route::get('/product', function () {
     return Inertia::render('Product/Index');

@@ -1,15 +1,27 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, router} from '@inertiajs/react';
 
-const ActionLink = ({ className = '', href, children }) => {
+const ActionButton = ( props ) => {
     return (
-        <Link className={`px-2 py-1 rounded-md text-white ` + className}>
-            {children}
-        </Link>
+        <button {...props} className={`px-2 py-1 rounded-md text-white ` + props.className}>
+            {props.children}
+        </button>
     )
 }
 
 export default function Index(props) {
+
+    const { data: user, meta } = props.user;
+
+    const deleteUser = async (id) => {
+        try {
+            const deletes = router.delete(`/user/${id}`);
+            console.log(deletes)
+        } catch(e) {
+            console.log(e)
+        }
+    }
+
     return (
         <AuthenticatedLayout
             auth={props.auth}
@@ -39,31 +51,49 @@ export default function Index(props) {
                                 <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">No</th>
                                 <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
                                 <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Email</th>
-                                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Username</th>
                                 <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Address</th>
                                 <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Phone Number</th>
                                 <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Wallet</th>
                                 <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Store Name</th>
+                                {/* <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">User Role</th> */}
                             </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200 bg-white">
-                                <tr>
-                                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                        <div className="flex gap-2">
-                                            <ActionLink className="bg-teal-500">Show</ActionLink> 
-                                            <ActionLink className="bg-blue-500" >Edit</ActionLink> 
-                                            <ActionLink className="bg-red-500" >Delete</ActionLink> 
-                                        </div>
-                                    </td>
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">1</td>
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Lindsay Walton</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">lindsay.walton@example.com</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">lindsay</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Jl. Gunung jadi</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">081323212343</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Rp. 5.000.000</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Lindsay Clothes</td>
-                                </tr>
+                                {user.map((user, index) => (
+                                    <tr key={user.id}> 
+                                        <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                            <div className="flex gap-2">
+                                                {/* <Link className="px-2 py-1 rounded-md text-white bg-teal-500">Show</Link>  */}
+                                                <Link className="px-2 py-1 rounded-md text-white bg-blue-500" >Edit</Link> 
+                                                <ActionButton type="button" className="bg-red-500" onClick={() => deleteUser(user.id) }>Delete</ActionButton> 
+                                            </div>
+                                        </td>
+                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                            {meta.from + index}
+                                        </td>
+                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                            {user.name}
+                                        </td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                            {user.email}
+                                        </td>                                        
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                            {user.address}
+                                        </td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                            {user.phone_number}
+                                        </td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                            {user.wallet}
+                                        </td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                            {user.store_name}
+                                        </td>
+                                        {/* <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                            {user.role.name}
+                                        </td> */}
+                                    </tr>
+                                ))}
                             </tbody>                            
                         </table>
                         </div>

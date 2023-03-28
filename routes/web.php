@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Models\Role;
@@ -28,14 +29,16 @@ Route::get('/', function () {
 
 // Resource User
 Route::resource('user', UserController::class);
-
 Route::post('user', [UserController::class, 'store'])->name('user.store');
 Route::put('user/{id}', [UserController::class, 'update'])->name('user.update');
 Route::delete('user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard/Index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Resource Dashboard
+Route::resource('dashboard', DashboardController::class);
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return Inertia::render('Dashboard/Index');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/product', function () {
     return Inertia::render('Product/Index');

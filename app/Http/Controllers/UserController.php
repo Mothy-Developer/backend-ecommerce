@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\UserResource;
+use App\Http\Resources\UserCollection;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,35 +19,24 @@ class UserController extends Controller
 
     public function index(Request $request) 
     {
-        $query = User::query();
-        
+        $request->validate([
+            'direction' => ['in:asc, desc'],
+            'field' => ['in:name']
+        ]);
+        $query = User::query();   
+
         if ($request->q)
         {
             $query->where('name', 'like', '%'. $request->q .'%')
                 ->orWhere('email', 'like', '%'. $request->q .'%');
         }
 
-
         if ($request->has(['field', 'direction']))
         {
             $query->orderBy($request->field, $request->direction);
         }
 
-        $users = (
-            UserResource::collection($query->paginate($request->load))
-        )->additional([
-            'attributes' => [
-                'total' => User::count(),
-                'per_page' => 5,
-            ],
-            'filtered' => [
-                'load' => $request->load ?? $this->loadDefault,
-                'q' => $request-> q ?? '',
-                'page' => $request->page ?? 1,
-                'field' => $request->field ?? '',
-                'direction' => $request->direction ?? ''
-            ]
-        ]);
+        $users = new UserCollection($query->paginate($request->load));
         return inertia('User/Index', [
             'user' => $users,
             'roles' => Role::get()

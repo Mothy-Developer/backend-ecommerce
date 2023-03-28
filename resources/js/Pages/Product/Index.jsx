@@ -55,66 +55,6 @@ export default function Index(props) {
                                     </td>
                                 </tr>
                             </tbody>
-                            <tbody class="divide-y divide-gray-200 bg-white">
-                                <tr>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">2</td>
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Erigo Jacket</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Degu</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Rp500.000</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Jaket erigo original dari indonesia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">50</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Stok Tersedia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Clothes</td>
-                                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody class="divide-y divide-gray-200 bg-white">
-                                <tr>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">3</td>
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Erigo Jacket</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Degu</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Rp500.000</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Jaket erigo original dari indonesia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">50</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Stok Tersedia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Clothes</td>
-                                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody class="divide-y divide-gray-200 bg-white">
-                                <tr>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">4</td>
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Erigo Jacket</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Degu</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Rp500.000</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Jaket erigo original dari indonesia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">50</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Stok Tersedia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Clothes</td>
-                                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody class="divide-y divide-gray-200 bg-white">
-                                <tr>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">5</td>
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Erigo Jacket</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Degu</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Rp500.000</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Jaket erigo original dari indonesia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">50</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Stok Tersedia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Clothes</td>
-                                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
-                                    </td>
-                                </tr>
-                            </tbody>
                         </table>
                         </div>
                     </div>

@@ -48,7 +48,7 @@ export default function Index(props) {
                     preserveState: true,
                     preserveScroll: true,
                 }
-            )
+            );
         }, 150)
         , 
         []
@@ -114,12 +114,19 @@ export default function Index(props) {
                                                 { params.direction == 'asc' ? UpIcon() : DownIcon() }
                                             </div>
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Email</th>
+                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                            Role
+                                        </th>
+                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                            <div className="cursor-pointer flex items-center gap-x-2 justify-between" onClick={() => sort('email')}>
+                                                Email
+                                                { params.direction == 'asc' ? UpIcon() : DownIcon() }
+                                            </div>
+                                        </th>
                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Address</th>
                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Phone Number</th>
                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Wallet</th>
                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Store Name</th>
-                                        {/* <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">User Role</th> */}
                                     </tr>
                                     </thead>
                                     <tbody class="divide-y divide-gray-200 bg-white">
@@ -127,7 +134,6 @@ export default function Index(props) {
                                             <tr key={user.id}> 
                                                 <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                                     <div className="flex gap-2">
-                                                        {/* <Link className="px-2 py-1 rounded-md text-white bg-teal-500">Show</Link>  */}
                                                         <Link href={`/user/${user.id}/edit`} className="px-2 py-1 rounded-md text-white bg-blue-500">Edit</Link> 
                                                         <ActionButton type="button" className="bg-red-500" onClick={() => deleteUser(user.id) }>Delete</ActionButton> 
                                                     </div>
@@ -137,10 +143,13 @@ export default function Index(props) {
                                                 </td>
                                                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                                     {user.name}
-                                                </td>
+                                                </td> 
+                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                    {roles.find(it => user.roles_id == it.id).name}
+                                                </td>   
                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                     {user.email}
-                                                </td>                                        
+                                                </td>                              
                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                     {user.address}
                                                 </td>
@@ -153,9 +162,6 @@ export default function Index(props) {
                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                     {user.store_name}
                                                 </td>
-                                                {/* <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                    {user.role.name}
-                                                </td> */}
                                             </tr>
                                         ))}
                                     </tbody>                            

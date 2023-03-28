@@ -20,9 +20,10 @@ class UserController extends Controller
     public function index(Request $request) 
     {
         $request->validate([
-            'direction' => ['in:asc, desc'],
-            'field' => ['in:name']
+            'direction' => ['in:asc,desc'],
+            'field' => ['in:name,email']
         ]);
+
         $query = User::query();   
 
         if ($request->q)
@@ -58,7 +59,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
         $request->validate([
             'name' => ['required'],

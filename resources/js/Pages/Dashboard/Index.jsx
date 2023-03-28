@@ -16,8 +16,12 @@ export default function Index(props) {
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <p className="p-6 text-gray-900">This is Dashboard Screen</p>
-                        <p className="p-6 text-gray-900">You're logged in!</p>
+                        <p className="mt-3 px-6 py-1 text-gray-900">Hello {props.auth.user.name}!</p>
+                        <p className="p-6 text-gray-900">Welcome to Dashboard</p>
+                    </div>
+
+                    <div className="bg-black">
+                        <p></p>
                     </div>
                 </div>
             </div>

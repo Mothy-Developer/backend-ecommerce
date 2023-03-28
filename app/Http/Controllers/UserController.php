@@ -66,8 +66,8 @@ class UserController extends Controller
             'email' => ['required'],
             'address' => ['required'],
             'phone_number' => ['required'],
-            'wallet' => ['required'],
-            'store_name' => ['required'],
+            // 'wallet' => ['required'],
+            // 'store_name' => ['required'],
             'password' => ['required'],
             'role_id' => ['required']
         ]);
@@ -77,8 +77,8 @@ class UserController extends Controller
             'email' => $request->email,
             'address' => $request->address,
             'phone_number' => $request->phone_number,
-            'wallet' => $request->wallet,
-            'store_name' => $request->store_name,
+            'wallet' => $request->wallet || 0,
+            'store_name' => $request->store_name || "",
             'password' => Hash::make($request->password),
             'role_id' => $request->role_id,
         ]);

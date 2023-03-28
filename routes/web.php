@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Models\Role;
@@ -36,13 +37,10 @@ Route::delete('user/{id}', [UserController::class, 'destroy'])->name('user.destr
 // Resource Dashboard
 Route::resource('dashboard', DashboardController::class);
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard/Index');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/product', function () {
-    return Inertia::render('Product/Index');
-})->middleware(['auth', 'verified'])->name('product');
+// Resource Product
+Route::resource('product', ProductController::class);
+Route::get('product', [ProductController::class, 'index'])->name('product');
 
 Route::get('/product-gallery', function () {
     return Inertia::render('ProductGallery/Index');

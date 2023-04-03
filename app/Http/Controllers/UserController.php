@@ -16,8 +16,6 @@ class UserController extends Controller
         $this->middleware('auth')->except(['index']);
     }
 
-    public $loadDefault = 10;
-
     public function index(Request $request) 
     {
         $request->validate([

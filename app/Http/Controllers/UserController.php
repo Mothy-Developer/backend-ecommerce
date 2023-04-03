@@ -53,7 +53,7 @@ class UserController extends Controller
     public function edit(User $user) 
     {
         return inertia('User/Edit', [
-            'roles' => Role::get(),
+            'roles' => DB::table('roles')->select('id', 'name')->get(),
             'user' => $user
         ]);
     }

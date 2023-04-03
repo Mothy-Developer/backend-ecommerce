@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ProductCollection;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -35,13 +37,24 @@ class ProductController extends Controller
         $products = new ProductCollection($query->paginate($request->load));
 
         return inertia('Product/Index', [
-            'product' => $products
+            'product' => $products,
+            'user' => DB::table('users')->select('id', 'name')->get(),
+            'category' => DB::table('product_categories')->select('id', 'name')->get()
         ]);
     }
 
     public function create(Request $request)
     {
 
+    }
+
+    public function edit(Product $product)
+    {
+        return inertia('Product/Edit', [
+            'product' => $product,
+            'category' => DB::table('product_categories')->select('id', 'name')->get(),
+            'user' => DB::table('users')->select('id', 'name')->get()
+        ]);
     }
 
     public function store(Request $request)

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\UserCollection;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -40,7 +41,7 @@ class UserController extends Controller
         $users = new UserCollection($query->paginate($request->load));
         return inertia('User/Index', [
             'user' => $users,
-            'roles' => Role::get()
+            'roles' => DB::table('roles')->select('id', 'name')->get()
         ]);
     }
 

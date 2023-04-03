@@ -21,6 +21,8 @@ export default function Index(props) {
     const [ pageNumber, setPageNumber ] = useState([]);
     const [ params, setParams ] = useState(filtered);
 
+    console.log(props);
+
     const onChange = (e) => setParams({...params, [e.target.name]: e.target.value});
     const sort = (item) => {
         setParams({

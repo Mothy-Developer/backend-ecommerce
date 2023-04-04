@@ -27,16 +27,16 @@ class Product extends Model
 
     public function galleries()
     {
-        $this->hasMany(ProductGallery::class, 'products_id', 'id');
+        return $this->hasMany(ProductGallery::class, 'products_id', 'id');
     }
 
     public function category()
     {
-        $this->belongsTo(ProductCategory::class, 'categories_id', 'id');
+        return $this->belongsTo(ProductCategory::class, 'categories_id', 'id');
     }
 
     public function user()
     {
-        $this->belongsTo(User::class, 'users_id', 'id');
+        return $this->belongsTo(User::class, 'users_id', 'id');
     }
 }

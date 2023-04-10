@@ -1,5 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head, useForm, router} from '@inertiajs/react';
+import { Head, useForm} from '@inertiajs/react';
 import FormUser from './Partials/FormUser';
 
 export default function Edit(props) {

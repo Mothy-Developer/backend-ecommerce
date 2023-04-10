@@ -41,7 +41,9 @@ Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard'
 
 // Resource Product
 Route::resource('product', ProductController::class);
-Route::get('product', [ProductController::class, 'index'])->name('product');
+Route::post('product', [ProductController::class, 'store'])->name('product.store');
+Route::put('product/{id}', [ProductController::class, 'update'])->name('product.update');
+Route::delete('product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
 
 Route::get('/product-gallery', function () {
     return Inertia::render('ProductGallery/Index');

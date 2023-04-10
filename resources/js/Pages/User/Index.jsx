@@ -55,8 +55,7 @@ export default function Index(props) {
 
     console.log(props);
 
-    const onChange = (e) =>
-        setParams({ ...params, [e.target.name]: e.target.value });
+    const onChange = (e) => setParams({...params, [e.target.name]: e.target.value});
     const sort = (item) => {
         setParams({
             ...params,

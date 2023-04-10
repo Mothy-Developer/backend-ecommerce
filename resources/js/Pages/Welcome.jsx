@@ -3,7 +3,7 @@ import { Link, Head } from '@inertiajs/react';
 export default function Welcome(props) {
     return (
         <>
-            <Head title="Welcome" />
+            <Head title="Dashboard Welcome" />
             <div className="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
                 <div className="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
                     {props.auth.user ? (
@@ -54,7 +54,7 @@ export default function Welcome(props) {
                         <h2 className="mt-2 text-xl font-semibold text-gray-900 dark:text-white">
                             E-Commerce System
                         </h2>
-                    </div>    
+                    </div>
 
                     {/* <div className="mt-16">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
